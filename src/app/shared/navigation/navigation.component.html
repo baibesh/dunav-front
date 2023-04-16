@@ -1,2 +1,15 @@
-<app-language></app-language>
-<p>navigation works!</p>
+<app-header></app-header>
+
+<nav>
+  <div class="container flex align-items-center justify-content-between">
+    <div class="logo">
+      <img src="assets/img/dunav-logo.png" alt="logo">
+    </div>
+
+    <p-menubar [model]="items"></p-menubar>
+
+    <div>
+      <app-language></app-language>
+    </div>
+  </div>
+</nav>
