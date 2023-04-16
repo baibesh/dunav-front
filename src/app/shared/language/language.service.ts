@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ILanguage } from 'src/app/core/interfaces/language.interface';
+import { ILanguage } from 'src/app/shared/language/language.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -28,25 +28,33 @@ export class LanguageService {
       code: 'kk',
     },
   ];
-  languageMap: {
-    en: ILanguage;
-    sv: ILanguage;
-    it: ILanguage;
-  } = {
+  languageMap:
+    | {
+        en: ILanguage;
+        hu: ILanguage;
+        kk: ILanguage;
+        ru: ILanguage;
+      }
+    | any = {
     en: {
       code: 'en',
       label: 'English',
       icon: 'gb',
     },
-    sv: {
-      code: 'sv',
-      label: 'Svenska',
-      icon: 'se',
+    hu: {
+      code: 'hu',
+      label: 'Magyar',
+      icon: 'hu',
     },
-    it: {
-      label: 'Italian',
-      icon: 'it',
-      code: 'it',
+    kk: {
+      label: 'Қазақша',
+      icon: 'kk',
+      code: 'kk',
+    },
+    ru: {
+      label: 'Русский',
+      icon: 'ru',
+      code: 'ru',
     },
   };
 
@@ -61,8 +69,9 @@ export class LanguageService {
     return this.languages;
   }
 
-  getLanguage(code: 'en' | 'sv' | 'it' | string): ILanguage {
-    if (code === 'en' || code === 'sv' || code === 'it') {
+  getLanguage(code: string): ILanguage {
+    const languages = this.languages.map((lang) => lang.code);
+    if (languages.includes(code)) {
       return this.languageMap[code];
     } else {
       return this.languageMap['en'];

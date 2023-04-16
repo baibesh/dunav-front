@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './main.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { NavigationComponent } from '../../shared/navigation/navigation.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [MainComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), TranslateModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    TranslateModule,
+    NavigationComponent,
+  ],
 })
 export class MainModule {}

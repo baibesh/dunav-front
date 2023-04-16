@@ -1,0 +1,29 @@
+<div>
+  <p-dropdown
+    [formControl]="language"
+    [options]="languages"
+    optionLabel="label"
+    optionValue="code"
+    [filter]="false"
+    [showClear]="false"
+    placeholder="Select a language">
+    <ng-template pTemplate="selectedItem">
+      <div class="language" *ngIf="selectLanguage">
+        <div [style]="'color:' + color">{{ selectLanguage.label }}</div>
+        <img
+          src="assets/img/flags/{{ selectLanguage.icon }}.svg"
+          [style]="{ width: '20px' }"
+          [alt]="selectLanguage.label" />
+      </div>
+    </ng-template>
+    <ng-template let-language pTemplate="item">
+      <div class="language">
+        <div style="color: #000000">{{ language.label }}</div>
+        <img
+          src="assets/img/flags/{{ language.icon }}.svg"
+          [style]="{ width: '20px' }"
+          [alt]="language.label" />
+      </div>
+    </ng-template>
+  </p-dropdown>
+</div>
